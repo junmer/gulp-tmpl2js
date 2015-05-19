@@ -16,7 +16,7 @@
 [dep-image]: http://img.shields.io/david/junmer/gulp-tmpl2js.svg
 
 
-> Gulp plugin for compile tmpl to js string, optional amd or commonjs wraper.
+> Gulp plugin for compile tmpl to js string, optional amd or commonjs wrapper.
 
 ## Install
 
@@ -30,7 +30,7 @@ $ npm install --save-dev gulp-tmpl2js
 var gulp = require('gulp');
 var tmpl2js = require('gulp-tmpl2js');
 
-gulp.task('default', function () {
+gulp.task('tmpl2js', function () {
     return gulp.src('src/*.tpl')
         .pipe(tmpl2js())
         .pipe(gulp.dest('dist'));
@@ -60,9 +60,49 @@ Options:
 
 * `ext`: target file extname. Defaults to `.js`
 
+
+## Examples
+
+#### Compress html and wrap with `define`
+
+```
+var gulp = require('gulp');
+var tmpl2js = require('gulp-tmpl2js');
+
+gulp.task('tmpl2js', function () {
+    return gulp.src('src/*.tpl')
+        .pipe(tmpl2js({
+            mode: 'compress',
+            wrap: 'amd'
+        }))
+        .pipe(gulp.dest('dist'));
+});
+```
+
+#### Input
+
+```html
+<div id="i-am-a-id">
+  <div class="i-am-a-class">
+    i am test
+  </div>
+</div>
+<script>
+    var test = 'test';
+    alert(test);
+</script>
+```
+
+#### Output
+
+```js
+define(function () {return '<div id="i-am-a-id"><div class="i-am-a-class">i am test</div></div><script>var test = \'test\';alert(test);</'+'script>';});
+```
+
+
 ## Related
 
-- [html2js](https://github.com/jumer/html2js)
+- [html2js](https://github.com/junmer/html2js)
 
 ## License
 
