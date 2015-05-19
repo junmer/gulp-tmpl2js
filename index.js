@@ -13,21 +13,14 @@ var html2js = require('html2js');
 var replaceExt = require('replace-ext');
 var pluginName = 'gulp-tmpl2js';
 
-
-function setup(opts) {
-    var options = extend({}, opts, {
-        clone: false,
-        ext: '.js'
-    });
-    return options;
-}
-
-
 module.exports = function (opts) {
 
     function tmpl2js(file, encoding, callback) {
 
-        var options = setup(opts || {});
+        var options = extend({
+            clone: false,
+            ext: '.js'
+        }, opts);
 
         if (file.isNull()) {
             return callback(null, file);
@@ -49,9 +42,8 @@ module.exports = function (opts) {
         file.path = replaceExt(file.path, options.ext);
 
         // html2js
-        file.contents = new Buffer(
-            html2js(file.contents.toString(encoding), options)
-        );
+        var code = html2js(file.contents.toString(encoding), options);
+        file.contents = new Buffer(code, encoding);
 
         callback(null, file);
 
