@@ -1,7 +1,7 @@
 {
   "name": "gulp-tmpl2js",
-  "version": "0.0.1",
-  "description": "Gulp plugin for compile tmpl to js string, optional amd or commonjs wraper.",
+  "version": "0.1.0",
+  "description": "Gulp plugin for compile tmpl to js string, optional amd or commonjs wrapper.",
   "license": "MIT",
   "repository": "junmer/gulp-tmpl2js",
   "author": {
@@ -22,9 +22,11 @@
     "gulpplugin",
     "template",
     "tpl",
+    "html",
     "tmpl",
     "tpl2js",
-    "html2js"
+    "html2js",
+    "js"
   ],
   "dependencies": {
     "gulp-util": "^3.0.0",
