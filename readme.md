@@ -20,7 +20,7 @@
 
 ## Install
 
-```
+```sh
 $ npm install --save-dev gulp-tmpl2js
 ```
 
@@ -65,7 +65,7 @@ Options:
 
 #### Compress html and wrap with `define`
 
-```
+```js
 var gulp = require('gulp');
 var tmpl2js = require('gulp-tmpl2js');
 
